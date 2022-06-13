@@ -4,11 +4,13 @@
         <div>
             <table>
                 <tr>
+                    <th></th>
                     <th>Titre</th>
                     <th>Description</th>
                 </tr>
 
                 <tr v-for="annonce in listeAnnonce" :key="annonce.id">
+                    <td><router-link :to="`/Annonce/details/${annonce.id}`">{{ annonce.id }}</router-link></td>
                     <td>{{ annonce.titre }}</td>
                     <td>{{ annonce.Description }}</td>
                 </tr>

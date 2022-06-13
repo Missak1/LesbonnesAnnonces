@@ -1,7 +1,9 @@
 <template>
     <section>
-    <h1>Inscription</h1>
+      <div id="container">
+    
     <form ref="inscription">
+      <h1>Inscription</h1>
       <div>
         <label for="pseudo">Pseudo : </label>
           <input id="pseudo" type="text" name="pseudo"/>
@@ -30,6 +32,7 @@
         <button type="button" @click="inscription()" value="submit">S'inscrire</button>
       </div>
     </form>
+    </div>
   </section>
 </template>
 

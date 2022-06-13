@@ -113,6 +113,35 @@ app.get('/_annonce', (req, res)=> {
     })
 })
 
+//Afficher une annonce
+app.get('/:id/_annonce', (req, res)=> {
+    const client = mysql.createConnection({
+        host,
+        user,
+        password,
+        database
+    });
+
+    
+    client.connect((err) => {
+        if(!err){
+            let query = 'SELECT * FROM `annonces` WHERE id = ?;'
+            let params=[req.params.id];
+            // console.log(query, params)
+            client.query(query, params, (err, rows, fields) => {
+                if(!err){
+                    res.json(rows[0])
+                } else {
+                    console.log('err', err)
+                    res.send('false')
+                }
+            })
+        }else {
+            console.log(err)
+        }
+    })
+})
+
 //Afficher profil utilisateur connecté
 app.get('/:id/_profilUtilisateur', (req, res)=> {
     console.log(req.body)
@@ -131,7 +160,37 @@ app.get('/:id/_profilUtilisateur', (req, res)=> {
             console.log(query, params)
             client.query(query, params, (err, rows, fields) => {
                 if(!err){
-                    res.json(rows)
+                    res.json(rows[0])
+                } else {
+                    console.log('err', err)
+                    res.send('false')
+                }
+            })
+        }else {
+            console.log(err)
+        }
+    })
+})
+
+//Modification de profil utilisateur
+app.post('/:id/_profilUtilisateur', upload.fields([]), (req, res)=> {
+    console.log(req.body)
+    const client = mysql.createConnection({
+        host,
+        user,
+        password,
+        database
+    });
+
+    
+    client.connect((err) => {
+        if(!err){
+            let query = 'UPDATE `utilisateurs` SET `nom`=?, `prenom`=?, `password`=?, `email`=?, `numTel`=? WHERE id = ?'
+            let params=[req.body.nom, req.body.prenom, req.body.password, req.body.email, req.body.numTel, req.params.id];
+            // console.log(query, params)
+            client.query(query, params, (err, rows, fields) => {
+                if(!err){
+                    res.send('true')
                 } else {
                     console.log('err', err)
                     res.send('false')

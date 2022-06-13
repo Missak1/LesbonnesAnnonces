@@ -1,7 +1,9 @@
 <template>
     <section>
-        <h1>Bienvenue sur votre profil</h1>
-            <div>
+        <div id="container">
+        
+            <form>
+                <h1>Bienvenue sur votre profil</h1>
             <table>
                 <tr>
                     <th>Pseudo</th>
@@ -11,17 +13,20 @@
                     <th>Numero de telephone</th>
                 </tr>
 
-                <tr v-for="profilUtilisateur in profil" :key="profilUtilisateur.id">
-                    <td>{{ profilUtilisateur.pseudo }}</td>
-                    <td>{{ profilUtilisateur.nom }}</td>
-                    <td>{{ profilUtilisateur.prenom }}</td>
-                    <td>{{ profilUtilisateur.email }}</td>
-                    <td>{{ profilUtilisateur.numTel }}</td>
+                <tr>
+                    <td>{{ profil.pseudo }}</td>
+                    <td>{{ profil.nom }}</td>
+                    <td>{{ profil.prenom }}</td>
+                    <td>{{ profil.email }}</td>
+                    <td>{{ profil.numTel }}</td>
                 </tr>
             </table>
-        </div>
-                <!-- <button type="button" value="deconnexion">Deconnexion</button>
-                <button type="button" @click="profilUtilisateur()">Test</button> -->
+        
+
+                <router-link to="/modifierprofil">Modifier son profil</router-link>
+                <!-- <button type="button" @click="profilUtilisateur()">Test</button> -->
+                </form>
+               </div>
     </section>        
 </template>
 
@@ -37,8 +42,10 @@ export default {
     },
     methods: {
         async profilUtilisateur () {
-            const response = await axios.get("http://localhost:3000/" + sessionStorage.getItem("id") + "/_profilUtilisateur");
-            alert(response.data);
+            const userId = localStorage.getItem('userId');
+
+            const response = await axios.get("http://localhost:3000/" + userId + "/_profilUtilisateur");
+            console.log(response.data);
             this.profil = response.data
         }
     },
@@ -47,3 +54,6 @@ export default {
     }
 }
 </script>
+
+<!-- sessionStorage.getItem("id") -->
+

@@ -1,7 +1,9 @@
 <template>
     <section>
-    <h1>Poster une annonce</h1>
+        <div id="container">
+    
     <form ref="newPost">
+        <h1>Poster une annonce</h1>
     <div>
         <label for="titre">Titre : </label>
         <input id="titre" type="text" name="titre"/>
@@ -15,6 +17,7 @@
         <button type="button" @click="newPost()" value="submit">Poster</button>
     </div>
     </form>
+    </div>
 </section>
 </template>
 

@@ -4,8 +4,10 @@ import TheAccueil from '../views/Accueil.vue'
 import TheConnexion from '../views/Connexion.vue'
 import TheInscription from '../views/Inscription.vue'
 import TheProfil from '../views/Profil.vue'
+import ModifierProfil from '../views/ModifierProfil.vue'
 import PosterAnnonce from '../views/PosterAnnonce.vue'
 import TheAnnonce from '../views/Annonce.vue'
+import DetailsAnnonce from '../views/DetailsAnnonce.vue'
 
 Vue.use(VueRouter)
 
@@ -31,6 +33,11 @@ const routes = [
     component: TheProfil
   },
   {
+    path: '/modifierprofil',
+    name: 'modifierProfil',
+    component: ModifierProfil
+  },
+  {
     path: '/posterannonce',
     name: 'poster',
     component: PosterAnnonce
@@ -39,6 +46,11 @@ const routes = [
     path: '/Annonce',
     name: 'annonce',
     component: TheAnnonce
+  },
+  {
+    path: '/Annonce/details/:id',
+    name: 'detailsAnnonce',
+    component: DetailsAnnonce
   }
 ]
 

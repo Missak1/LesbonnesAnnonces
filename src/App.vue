@@ -7,7 +7,7 @@
       <router-link to="/posterannonce">Poster une annonce</router-link> |
       <router-link to="/annonce">Annonce</router-link>
     </nav>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
