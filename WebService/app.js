@@ -142,6 +142,37 @@ app.get('/:id/_annonce', (req, res)=> {
     })
 })
 
+//Editer le commentaire d'une annonce
+app.post('/:id/_annonce/edit', upload.fields([]), (req, res)=> {
+    console.log(req.body)
+    console.log(req.params.id)
+    const client = mysql.createConnection({
+        host,
+        user,
+        password,
+        database
+    });
+
+    
+    client.connect((err) => {
+        if(!err){
+            let query = 'UPDATE `annonces` SET `commentaire`=? WHERE id = ? ;'
+            let params=[req.body.commentaire, req.params.id];
+            // console.log(query, params)
+            client.query(query, params, (err, rows, fields) => {
+                if(!err){
+                    res.send('true')
+                } else {
+                    console.log('err', err)
+                    res.send('false')
+                }
+            })
+        }else {
+            console.log(err)
+        }
+    })
+})
+
 //Afficher profil utilisateur connecté
 app.get('/:id/_profilUtilisateur', (req, res)=> {
     console.log(req.body)
