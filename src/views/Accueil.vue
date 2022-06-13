@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="container">
   <h1>Bienvenue sur LesBonnesAnnonces</h1>
   <div>
     <p>

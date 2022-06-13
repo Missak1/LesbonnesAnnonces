@@ -1,11 +1,13 @@
 <template>
-    <section>
-        <h1>Bienvenue sur les Annonces</h1>
-        <div>
+    <section id="container">
+        
+        <form>
+            <h1>Bienvenue sur les Annonces</h1>
             <table>
                 <tr>
                     <th></th>
-                    <th>Titre</th>
+                    <th>Numero</th>
+                    <th>Titre </th>
                     <th>Description</th>
                 </tr>
 
@@ -15,7 +17,7 @@
                     <td>{{ annonce.Description }}</td>
                 </tr>
             </table>
-        </div>
+        </form>
     </section>
 </template>
 

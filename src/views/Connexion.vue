@@ -38,6 +38,13 @@ export default {
 </script>
 
 <style>
+
+body {
+    color:black;
+    background-color:rgba(160, 160, 160, 0.76);
+    background-size: cover;
+
+    }
 #container{
     width:500px;
     margin:0 auto;
